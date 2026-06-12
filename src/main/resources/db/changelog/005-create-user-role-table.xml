@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="005-create-user-role-table" author="promolati">
+
+        <createTable tableName="user_roles">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"
+                             primaryKeyName="pk_user_roles"
+                             nullable="false"/>
+            </column>
+
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at"
+                    type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <!-- Foreign Key : users -->
+        <addForeignKeyConstraint
+                baseTableName="user_roles"
+                baseColumnNames="user_id"
+                referencedTableName="users"
+                referencedColumnNames="id"
+                constraintName="fk_user_roles_user"/>
+
+        <!-- Foreign Key : roles -->
+        <addForeignKeyConstraint
+                baseTableName="user_roles"
+                baseColumnNames="role_id"
+                referencedTableName="roles"
+                referencedColumnNames="id"
+                constraintName="fk_user_roles_role"/>
+
+        <!-- Prevent duplicate role assignments -->
+        <addUniqueConstraint
+                tableName="user_roles"
+                columnNames="user_id, role_id"
+                constraintName="uk_user_role"/>
+
+        <!-- Indexes -->
+        <createIndex tableName="user_roles"
+                     indexName="idx_user_roles_user_id">
+            <column name="user_id"/>
+        </createIndex>
+
+        <createIndex tableName="user_roles"
+                     indexName="idx_user_roles_role_id">
+            <column name="role_id"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

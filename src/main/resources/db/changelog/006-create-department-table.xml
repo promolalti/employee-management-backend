@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="006-create-department-table" author="promolati">
+
+        <createTable tableName="departments">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"
+                             primaryKeyName="pk_departments"
+                             nullable="false"/>
+            </column>
+
+            <column name="department_code" type="VARCHAR(50)">
+                <constraints nullable="false"
+                             unique="true"
+                             uniqueConstraintName="uk_departments_code"/>
+            </column>
+
+            <column name="department_name" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(255)"/>
+
+            <column name="manager_employee_id" type="BIGINT"/>
+
+            <column name="status" type="VARCHAR(20)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_by" type="VARCHAR(100)"/>
+
+            <column name="created_at"
+                    type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_by" type="VARCHAR(100)"/>
+
+            <column name="updated_at"
+                    type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <!-- Index -->
+        <createIndex tableName="departments"
+                     indexName="idx_departments_manager">
+            <column name="manager_employee_id"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
