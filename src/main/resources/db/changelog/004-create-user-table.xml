@@ -89,14 +89,6 @@
 
         </createTable>
 
-        <!-- Foreign Key -->
-        <addForeignKeyConstraint
-                baseTableName="users"
-                baseColumnNames="employee_id"
-                referencedTableName="employees"
-                referencedColumnNames="id"
-                constraintName="fk_users_employee"/>
-
     </changeSet>
 
 </databaseChangeLog>

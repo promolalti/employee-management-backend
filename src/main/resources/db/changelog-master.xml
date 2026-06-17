@@ -6,16 +6,16 @@
         xsi:schemaLocation="
         http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <include file="changelog/001-create-role-table.xml"/>
-    <include file="changelog/002-create-permission-table.xml"/>
-    <include file="changelog/003-create-role-permission-table.xml"/>
-    <include file="changelog/004-create-user-table.xml"/>
-    <include file="changelog/005-create-user-role-table.xml"/>
-    <include file="changelog/006-create-department-table.xml"/>
-    <include file="changelog/007-create-employee-table.xml"/>
-    <include file="changelog/008-create-refresh-token-table.xml"/>
-    <include file="changelog/009-create-password-reset-token-table.xml"/>
-    <include file="changelog/010-create-audit-log-table.xml"/>
-    <include file="changelog/011-add-department-manager-fk.xml"/>
-    <include file="changelog/012-add-user-employee-fk.xml"/>
+    <include file="classpath:db/changelog/001-create-role-table.xml"/>
+    <include file="classpath:db/changelog/002-create-permission-table.xml"/>
+    <include file="classpath:db/changelog/003-create-role-permission-table.xml"/>
+    <include file="classpath:db/changelog/004-create-user-table.xml"/>
+    <include file="classpath:db/changelog/005-create-user-role-table.xml"/>
+    <include file="classpath:db/changelog/006-create-department-table.xml"/>
+    <include file="classpath:db/changelog/007-create-employee-table.xml"/>
+    <include file="classpath:db/changelog/008-create-refresh-token-table.xml"/>
+    <include file="classpath:db/changelog/009-create-password-reset-token-table.xml"/>
+    <include file="classpath:db/changelog/010-create-audit-log-table.xml"/>
+    <include file="classpath:db/changelog/011-add-department-manager-fk.xml"/>
+    <include file="classpath:db/changelog/012-add-user-employee-fk.xml"/>
 </databaseChangeLog>
